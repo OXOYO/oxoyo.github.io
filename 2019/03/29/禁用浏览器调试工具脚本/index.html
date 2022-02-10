@@ -1,0 +1,201 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>禁用浏览器调试工具脚本 | 之梦</title>
+  <meta name="author" content="OXOYO">
+  
+  <meta name="description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374/** * Creat">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="禁用浏览器调试工具脚本">
+  <meta property="og:site_name" content="之梦">
+
+  
+    <meta property="og:image" content="undefined">
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="之梦" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/r29/html5.min.js"></script><![endif]-->
+  
+
+</head>
+</html>
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">之梦</a></h1>
+  <h2><a href="/">大浪方可淘狂沙，疾风才能识劲草</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-03-29T08:04:06.000Z"><a href="/2019/03/29/禁用浏览器调试工具脚本/">2019-03-29</a></time>
+      
+      
+  
+    <h1 class="title">禁用浏览器调试工具脚本</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by OXOYO on 2018/11/9.</span><br><span class="line"> *</span><br><span class="line"> * &#x7981;&#x7528;&#x8C03;&#x8BD5;&#x5DE5;&#x5177;</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">const closeWindow = (loop) =&gt; {</span><br><span class="line">  clearInterval(loop)</span><br><span class="line">  // &#x5173;&#x95ED;&#x5F53;&#x524D;&#x7A97;&#x53E3;</span><br><span class="line">  window.close()</span><br><span class="line">  // &#x5C06;&#x5F53;&#x524D;&#x7A97;&#x53E3;&#x8DF3;&#x8F6C;&#x7F6E;&#x7A7A;&#x767D;&#x9875;</span><br><span class="line">  window.location = &apos;about:blank&apos;</span><br><span class="line">  console.clear()</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">export default {</span><br><span class="line">  init: function () {</span><br><span class="line">    window.onkeydown = window.onkeyup = window.onkeypress = function (event) {</span><br><span class="line">      // &#x5224;&#x65AD;&#x662F;&#x5426;&#x6309;&#x4E0B;F12&#xFF0C;F12&#x952E;&#x7801;&#x4E3A;123</span><br><span class="line">      if (event.keyCode === 123) {</span><br><span class="line">        event.preventDefault()</span><br><span class="line">        window.event.returnValue = false</span><br><span class="line">      }</span><br><span class="line">    }</span><br><span class="line">    // &#x4E3A;&#x53F3;&#x952E;&#x6DFB;&#x52A0;&#x81EA;&#x5B9A;&#x4E49;&#x4E8B;&#x4EF6;</span><br><span class="line">    window.oncontextmenu = function (event) {</span><br><span class="line">      event.preventDefault()</span><br><span class="line">      return false</span><br><span class="line">    }</span><br><span class="line">    // &#x6253;&#x5F00;&#x63A7;&#x5236;&#x53F0;&#x7684;&#x5BBD;&#x6216;&#x9AD8;&#x9608;&#x503C;</span><br><span class="line">    let threshold = 160</span><br><span class="line">    let div = document.createElement(&apos;div&apos;)</span><br><span class="line">    Object.defineProperty(div, &apos;id&apos;, {</span><br><span class="line">      get: () =&gt; {</span><br><span class="line">        closeWindow(loop)</span><br><span class="line">      }</span><br><span class="line">    })</span><br><span class="line">    // &#x5FAA;&#x73AF;&#x68C0;&#x6D4B;</span><br><span class="line">    let loop = setInterval(function () {</span><br><span class="line">      let startTime = performance.now()</span><br><span class="line">      if (</span><br><span class="line">        // &#x65B9;&#x5F0F;&#x4E00;&#xFF1A;&#x68C0;&#x6D4B;console&#x76F8;&#x5173;&#x5BF9;&#x8C61;</span><br><span class="line">        (window.console &amp;&amp; (console.firebug || console.table &amp;&amp; /firebug/i.test(console.table()))) ||</span><br><span class="line">        (typeof opera === &apos;object&apos; &amp;&amp; typeof opera.postError === &apos;function&apos; &amp;&amp; console.profile.length &gt; 0) ||</span><br><span class="line">        (typeof console.profiles === &apos;object&apos; &amp;&amp; console.profiles.length &gt; 0) ||</span><br><span class="line">        // &#x65B9;&#x5F0F;&#x4E8C;&#xFF1A;&#x68C0;&#x6D4B;&#x7A97;&#x53E3;&#x5BBD;&#x9AD8;</span><br><span class="line">        (window.outerWidth - window.innerWidth &gt; threshold) ||</span><br><span class="line">        (window.outerHeight - window.innerHeight &gt; threshold)</span><br><span class="line">      ) {</span><br><span class="line">        closeWindow(loop)</span><br><span class="line">      }</span><br><span class="line">      // &#x65B9;&#x5F0F;&#x4E09;&#xFF1A;&#x590D;&#x5199;div.id&#x7684;getter&#x65B9;&#x6CD5;&#xFF0C;&#x63A7;&#x5236;&#x53F0;&#x6253;&#x5F00;&#x65F6;&#x6253;&#x5370;div&#x4F1A;&#x8C03;&#x7528;&#x5176;div.id&#x7684;get&#x65B9;&#x6CD5;</span><br><span class="line">      console.log(div)</span><br><span class="line">      console.clear()</span><br><span class="line">      // &#x65B9;&#x5F0F;&#x56DB;&#xFF1A;&#x590D;&#x5199;toString&#x65B9;&#x6CD5;&#xFF0C;&#x63A7;&#x5236;&#x53F0;&#x6253;&#x5F00;&#x65F6;&#x6253;&#x5370;devtools&#x4F1A;&#x8C03;&#x7528;&#x5176;toString&#x65B9;&#x6CD5;</span><br><span class="line">      let devtools = /./</span><br><span class="line">      devtools.toString = function () {</span><br><span class="line">        this.opened = true</span><br><span class="line">        closeWindow(loop)</span><br><span class="line">      }</span><br><span class="line">      console.log(&apos;%c&apos;, devtools)</span><br><span class="line">      console.clear()</span><br><span class="line">      // &#x65B9;&#x5F0F;&#x4E94;&#xFF1A;&#x68C0;&#x6D4B;&#x4EE3;&#x7801;&#x8017;&#x65F6;&#xFF0C;devtool&#x4E0B;&#x4EE3;&#x7801;&#x8FD0;&#x884C;&#x901F;&#x5EA6;&#x964D;&#x4F4E;</span><br><span class="line">      for (let i = 0; i &lt; 1000; i++) {</span><br><span class="line">        console.log(i)</span><br><span class="line">        console.clear()</span><br><span class="line">      }</span><br><span class="line">      let diff = performance.now() - startTime</span><br><span class="line">      if (diff &gt; 200) {</span><br><span class="line">        closeWindow(loop)</span><br><span class="line">      }</span><br><span class="line">    }, 1000)</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/JS/">JS</a>, <a href="/tags/devTool/">devTool</a>
+  </div>
+
+        <!--
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+-->
+      
+      <div class="clearfix"></div>
+    </footer>
+    <div class="clearfix" style="margin-bottom: 30px;"></div>
+    <!-- 如果不是首页且没使用 `comments: false` 关闭评论，则尝试加载评论 -->
+
+    <!-- 配置中启用多说时，导入相应代码 -->
+    
+        <!-- 导入duoshuo.ejs时，同时指定其中几个变量的内容。 -->
+        <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2019/03/29/禁用浏览器调试工具脚本/" data-title="禁用浏览器调试工具脚本" data-url="http://oxoyo.github.io/2019/03/29/禁用浏览器调试工具脚本/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+        var duoshuoQuery = {short_name:"oxoyo"};
+
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0]
+            || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+    <!-- 配置中仅启用友言时，导入相应代码 -->
+    
+
+  </div>
+</article>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:oxoyo.github.io">
+  </form>
+</div>
+
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Emmet/">Emmet</a><small>1</small></li>
+  
+    <li><a href="/tags/F2E/">F2E</a><small>2</small></li>
+  
+    <li><a href="/tags/JS/">JS</a><small>1</small></li>
+  
+    <li><a href="/tags/Node/">Node</a><small>2</small></li>
+  
+    <li><a href="/tags/chrome/">chrome</a><small>1</small></li>
+  
+    <li><a href="/tags/devTool/">devTool</a><small>1</small></li>
+  
+    <li><a href="/tags/git/">git</a><small>1</small></li>
+  
+    <li><a href="/tags/github/">github</a><small>1</small></li>
+  
+    <li><a href="/tags/node-sass/">node-sass</a><small>1</small></li>
+  
+    <li><a href="/tags/npm/">npm</a><small>1</small></li>
+  
+    <li><a href="/tags/webpack/">webpack</a><small>1</small></li>
+  
+    <li><a href="/tags/移动端/">移动端</a><small>1</small></li>
+  
+    <li><a href="/tags/调试/">调试</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2022 OXOYO
+  
+  Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+  .
+  Theme by <a href="https://github.com/hexojs/hexo-theme-light" target="_blank">light</a>
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

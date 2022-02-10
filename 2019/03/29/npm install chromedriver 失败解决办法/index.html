@@ -1,0 +1,203 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>npm install chromedriver 失败解决办法 | 之梦</title>
+  <meta name="author" content="OXOYO">
+  
+  <meta name="description" content="&amp;#x89E3;&amp;#x51B3;&amp;#x529E;&amp;#x6CD5;12// &amp;#x5207;&amp;#x6362;chromedriver&amp;#x5305;cdn&amp;#x6E90;npm install chromedriver --chromedriver_cdnurl=http://cdn.npm.taobao.org/dist/chromedriver">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="npm install chromedriver 失败解决办法">
+  <meta property="og:site_name" content="之梦">
+
+  
+    <meta property="og:image" content="undefined">
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="之梦" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/r29/html5.min.js"></script><![endif]-->
+  
+
+</head>
+</html>
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">之梦</a></h1>
+  <h2><a href="/">大浪方可淘狂沙，疾风才能识劲草</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-03-29T07:58:07.000Z"><a href="/2019/03/29/npm install chromedriver 失败解决办法/">2019-03-29</a></time>
+      
+      
+  
+    <h1 class="title">npm install chromedriver 失败解决办法</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="&#x89E3;&#x51B3;&#x529E;&#x6CD5;"><a href="#&#x89E3;&#x51B3;&#x529E;&#x6CD5;" class="headerlink" title="&#x89E3;&#x51B3;&#x529E;&#x6CD5;"></a>&#x89E3;&#x51B3;&#x529E;&#x6CD5;</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// &#x5207;&#x6362;chromedriver&#x5305;cdn&#x6E90;</span><br><span class="line">npm install chromedriver --chromedriver_cdnurl=http://cdn.npm.taobao.org/dist/chromedriver</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="&#x9519;&#x8BEF;&#x4FE1;&#x606F;"><a href="#&#x9519;&#x8BEF;&#x4FE1;&#x606F;" class="headerlink" title="&#x9519;&#x8BEF;&#x4FE1;&#x606F;"></a>&#x9519;&#x8BEF;&#x4FE1;&#x606F;</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&gt; chromedriver@2.33.2 install E:\Webstorm_WorkSpace\X-Admin\node_modules\chromedriver</span><br><span class="line">&gt; node install.js</span><br><span class="line"></span><br><span class="line">Downloading https://chromedriver.storage.googleapis.com/2.33/chromedriver_win32.zip</span><br><span class="line">Saving to C:\Users\ADMINI~1\AppData\Local\Temp\chromedriver\chromedriver_win32.zip</span><br><span class="line">ChromeDriver installation failed Error with http(s) request: Error: getaddrinfo ENOTFOUND chromedriver.storage.googleapis.com chromedriver.storage.googleapis.com:443</span><br><span class="line">npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.4 (node_modules\fsevents):</span><br><span class="line">npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.4: wanted {&quot;os&quot;:&quot;darwin&quot;,&quot;arch&quot;:&quot;any&quot;} (current: {&quot;os&quot;:&quot;win32&quot;,&quot;arch&quot;:&quot;x64&quot;})</span><br><span class="line"></span><br><span class="line">npm ERR! code ELIFECYCLE</span><br><span class="line">npm ERR! errno 1</span><br><span class="line">npm ERR! chromedriver@2.33.2 install: `node install.js`</span><br><span class="line">npm ERR! Exit status 1</span><br><span class="line">npm ERR!</span><br><span class="line">npm ERR! Failed at the chromedriver@2.33.2 install script.</span><br><span class="line">npm ERR! This is probably not a problem with npm. There is likely additional logging output above.</span><br><span class="line"></span><br><span class="line">npm ERR! A complete log of this run can be found in:</span><br><span class="line">npm ERR!     C:\Users\Administrator\AppData\Roaming\npm-cache\_logs\2018-11-12T02_04_44_792Z-debug.log</span><br></pre></td></tr></table></figure>
+<h2 id="&#x89E3;&#x51B3;&#x529E;&#x6CD5;-1"><a href="#&#x89E3;&#x51B3;&#x529E;&#x6CD5;-1" class="headerlink" title="&#x89E3;&#x51B3;&#x529E;&#x6CD5;"></a>&#x89E3;&#x51B3;&#x529E;&#x6CD5;</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// &#x5207;&#x6362;chromedriver&#x5305;cdn&#x6E90;</span><br><span class="line">npm install chromedriver --chromedriver_cdnurl=http://cdn.npm.taobao.org/dist/chromedriver</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/npm/">npm</a>
+  </div>
+
+        <!--
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+-->
+      
+      <div class="clearfix"></div>
+    </footer>
+    <div class="clearfix" style="margin-bottom: 30px;"></div>
+    <!-- 如果不是首页且没使用 `comments: false` 关闭评论，则尝试加载评论 -->
+
+    <!-- 配置中启用多说时，导入相应代码 -->
+    
+        <!-- 导入duoshuo.ejs时，同时指定其中几个变量的内容。 -->
+        <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2019/03/29/npm install chromedriver 失败解决办法/" data-title="npm install chromedriver 失败解决办法" data-url="http://oxoyo.github.io/2019/03/29/npm install chromedriver 失败解决办法/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+        var duoshuoQuery = {short_name:"oxoyo"};
+
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0]
+            || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+    <!-- 配置中仅启用友言时，导入相应代码 -->
+    
+
+  </div>
+</article>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:oxoyo.github.io">
+  </form>
+</div>
+
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Emmet/">Emmet</a><small>1</small></li>
+  
+    <li><a href="/tags/F2E/">F2E</a><small>2</small></li>
+  
+    <li><a href="/tags/JS/">JS</a><small>1</small></li>
+  
+    <li><a href="/tags/Node/">Node</a><small>2</small></li>
+  
+    <li><a href="/tags/chrome/">chrome</a><small>1</small></li>
+  
+    <li><a href="/tags/devTool/">devTool</a><small>1</small></li>
+  
+    <li><a href="/tags/git/">git</a><small>1</small></li>
+  
+    <li><a href="/tags/github/">github</a><small>1</small></li>
+  
+    <li><a href="/tags/node-sass/">node-sass</a><small>1</small></li>
+  
+    <li><a href="/tags/npm/">npm</a><small>1</small></li>
+  
+    <li><a href="/tags/webpack/">webpack</a><small>1</small></li>
+  
+    <li><a href="/tags/移动端/">移动端</a><small>1</small></li>
+  
+    <li><a href="/tags/调试/">调试</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2022 OXOYO
+  
+  Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
+  .
+  Theme by <a href="https://github.com/hexojs/hexo-theme-light" target="_blank">light</a>
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
