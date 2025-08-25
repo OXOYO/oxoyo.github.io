@@ -1,0 +1,10 @@
+
+/* 首页隐藏站点信息 */
+#page-header.full_page #site-info {
+  display: none;
+}
+
+/* 首页隐藏站点信息 */
+#footer .footer-other {
+  padding: 200px 20px 20px;
+}

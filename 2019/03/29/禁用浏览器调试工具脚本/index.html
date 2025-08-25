@@ -1,0 +1,165 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>禁用浏览器调试工具脚本 | 之梦</title><meta name="author" content="OXOYO"><meta name="copyright" content="OXOYO"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374&#x2F;** * Created by OXOYO on 2018&#x2F;11&#x2F;9. * * 禁用调试工具 *&#x2F;const clo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="禁用浏览器调试工具脚本">
+<meta property="og:url" content="http://oxoyo.github.io/2019/03/29/%E7%A6%81%E7%94%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7%E8%84%9A%E6%9C%AC/index.html">
+<meta property="og:site_name" content="之梦">
+<meta property="og:description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374&#x2F;** * Created by OXOYO on 2018&#x2F;11&#x2F;9. * * 禁用调试工具 *&#x2F;const clo">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://oxoyo.github.io/img/cover_code.jpeg">
+<meta property="article:published_time" content="2019-03-29T08:04:06.000Z">
+<meta property="article:modified_time" content="2022-02-10T05:41:03.941Z">
+<meta property="article:author" content="OXOYO">
+<meta property="article:tag" content="JS">
+<meta property="article:tag" content="devTool">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://oxoyo.github.io/img/cover_code.jpeg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "禁用浏览器调试工具脚本",
+  "url": "http://oxoyo.github.io/2019/03/29/%E7%A6%81%E7%94%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7%E8%84%9A%E6%9C%AC/",
+  "image": "http://oxoyo.github.io/img/cover_code.jpeg",
+  "datePublished": "2019-03-29T08:04:06.000Z",
+  "dateModified": "2022-02-10T05:41:03.941Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "OXOYO",
+      "url": "http://oxoyo.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/2013.jpg"><link rel="canonical" href="http://oxoyo.github.io/2019/03/29/%E7%A6%81%E7%94%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7%E8%84%9A%E6%9C%AC/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":true,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '禁用浏览器调试工具脚本',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/img/background.jpeg);"></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/cover_code.jpeg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">之梦</span></a><a class="nav-page-title" href="/"><span class="site-name">禁用浏览器调试工具脚本</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">禁用浏览器调试工具脚本</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-03-29T08:04:06.000Z" title="发表于 2019-03-29 16:04:06">2019-03-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-02-10T05:41:03.941Z" title="更新于 2022-02-10 13:41:03">2022-02-10</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><span id="more"></span>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">/**<br> * Created by OXOYO on 2018/11/9.<br> *<br> * 禁用调试工具<br> */<br><br>const closeWindow = (loop) =&gt; &#123;<br>  clearInterval(loop)<br>  // 关闭当前窗口<br>  window.close()<br>  // 将当前窗口跳转置空白页<br>  window.location = &#x27;about:blank&#x27;<br>  console.clear()<br>&#125;<br><br>export default &#123;<br>  init: function () &#123;<br>    window.onkeydown = window.onkeyup = window.onkeypress = function (event) &#123;<br>      // 判断是否按下F12，F12键码为123<br>      if (event.keyCode === 123) &#123;<br>        event.preventDefault()<br>        window.event.returnValue = false<br>      &#125;<br>    &#125;<br>    // 为右键添加自定义事件<br>    window.oncontextmenu = function (event) &#123;<br>      event.preventDefault()<br>      return false<br>    &#125;<br>    // 打开控制台的宽或高阈值<br>    let threshold = 160<br>    let div = document.createElement(&#x27;div&#x27;)<br>    Object.defineProperty(div, &#x27;id&#x27;, &#123;<br>      get: () =&gt; &#123;<br>        closeWindow(loop)<br>      &#125;<br>    &#125;)<br>    // 循环检测<br>    let loop = setInterval(function () &#123;<br>      let startTime = performance.now()<br>      if (<br>        // 方式一：检测console相关对象<br>        (window.console &amp;&amp; (console.firebug || console.table &amp;&amp; /firebug/i.test(console.table()))) ||<br>        (typeof opera === &#x27;object&#x27; &amp;&amp; typeof opera.postError === &#x27;function&#x27; &amp;&amp; console.profile.length &gt; 0) ||<br>        (typeof console.profiles === &#x27;object&#x27; &amp;&amp; console.profiles.length &gt; 0) ||<br>        // 方式二：检测窗口宽高<br>        (window.outerWidth - window.innerWidth &gt; threshold) ||<br>        (window.outerHeight - window.innerHeight &gt; threshold)<br>      ) &#123;<br>        closeWindow(loop)<br>      &#125;<br>      // 方式三：复写div.id的getter方法，控制台打开时打印div会调用其div.id的get方法<br>      console.log(div)<br>      console.clear()<br>      // 方式四：复写toString方法，控制台打开时打印devtools会调用其toString方法<br>      let devtools = /./<br>      devtools.toString = function () &#123;<br>        this.opened = true<br>        closeWindow(loop)<br>      &#125;<br>      console.log(&#x27;%c&#x27;, devtools)<br>      console.clear()<br>      // 方式五：检测代码耗时，devtool下代码运行速度降低<br>      for (let i = 0; i &lt; 1000; i++) &#123;<br>        console.log(i)<br>        console.clear()<br>      &#125;<br>      let diff = performance.now() - startTime<br>      if (diff &gt; 200) &#123;<br>        closeWindow(loop)<br>      &#125;<br>    &#125;, 1000)<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://oxoyo.github.io">OXOYO</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://oxoyo.github.io/2019/03/29/%E7%A6%81%E7%94%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7%E8%84%9A%E6%9C%AC/">http://oxoyo.github.io/2019/03/29/%E7%A6%81%E7%94%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7%E8%84%9A%E6%9C%AC/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://oxoyo.github.io" target="_blank">之梦</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/JS/">JS</a><a class="post-meta__tags" href="/tags/devTool/">devTool</a></div><div class="post-share"><div class="social-share" data-image="/img/cover_code.jpeg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2019/03/29/%E9%80%9A%E8%BF%87chrome%E6%89%A9%E5%B1%95%E6%89%93%E5%BC%80%E7%BD%91%E9%A1%B5/" title="通过chrome扩展打开网页"><img class="cover" src="/img/cover_code.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">通过chrome扩展打开网页</div></div><div class="info-2"><div class="info-item-1">12345678910111213141516171819202122232425262728293031function Background () &#123;    chrome.runtime.onInstalled.addListener(function (details) &#123;        // only run the following section on install        if (details.reason !== &quot;install&quot;) &#123;            return;        &#125;        chrome.tabs.create(&#123;            url: &quot;https://webdesktop.net&quot;        &#125;);    &#125;);&#125;;var background = new Background();chrome.omnibox.onInputEntered.addListener(function ...</div></div></div></a><a class="pagination-related" href="/2019/03/29/npm%20install%20chromedriver%20%E5%A4%B1%E8%B4%A5%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" title="npm install chromedriver 失败解决办法"><img class="cover" src="/img/cover_code.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">npm install chromedriver 失败解决办法</div></div><div class="info-2"><div class="info-item-1">解决办法12// 切换chromedriver包cdn源npm install chromedriver --chromedriver_cdnurl=http://cdn.npm.taobao.org/dist/chromedriver    错误信息12345678910111213141516171819&gt; chromedriver@2.33.2 install E:\Webstorm_WorkSpace\X-Admin\node_modules\chromedriver&gt; node install.jsDownloading https://chromedriver.storage.googleapis.com/2.33/chromedriver_win32.zipSaving to C:\Users\ADMINI~1\AppData\Local\Temp\chromedriver\chromedriver_win32.zipChromeDriver installation failed Error with http(s) request: Error: g...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/2013.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">OXOYO</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" href="https://github.com/OXOYO"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/02/10/pay-me/" title="pay-me"><img src="/img/cover_code.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="pay-me"/></a><div class="content"><a class="title" href="/2022/02/10/pay-me/" title="pay-me">pay-me</a><time datetime="2022-02-10T05:46:04.000Z" title="发表于 2022-02-10 13:46:04">2022-02-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019/03/29/%E9%80%9A%E8%BF%87chrome%E6%89%A9%E5%B1%95%E6%89%93%E5%BC%80%E7%BD%91%E9%A1%B5/" title="通过chrome扩展打开网页"><img src="/img/cover_code.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="通过chrome扩展打开网页"/></a><div class="content"><a class="title" href="/2019/03/29/%E9%80%9A%E8%BF%87chrome%E6%89%A9%E5%B1%95%E6%89%93%E5%BC%80%E7%BD%91%E9%A1%B5/" title="通过chrome扩展打开网页">通过chrome扩展打开网页</a><time datetime="2019-03-29T08:11:12.000Z" title="发表于 2019-03-29 16:11:12">2019-03-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019/03/29/%E7%A6%81%E7%94%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7%E8%84%9A%E6%9C%AC/" title="禁用浏览器调试工具脚本"><img src="/img/cover_code.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="禁用浏览器调试工具脚本"/></a><div class="content"><a class="title" href="/2019/03/29/%E7%A6%81%E7%94%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7%E8%84%9A%E6%9C%AC/" title="禁用浏览器调试工具脚本">禁用浏览器调试工具脚本</a><time datetime="2019-03-29T08:04:06.000Z" title="发表于 2019-03-29 16:04:06">2019-03-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019/03/29/npm%20install%20chromedriver%20%E5%A4%B1%E8%B4%A5%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" title="npm install chromedriver 失败解决办法"><img src="/img/cover_code.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="npm install chromedriver 失败解决办法"/></a><div class="content"><a class="title" href="/2019/03/29/npm%20install%20chromedriver%20%E5%A4%B1%E8%B4%A5%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" title="npm install chromedriver 失败解决办法">npm install chromedriver 失败解决办法</a><time datetime="2019-03-29T07:58:07.000Z" title="发表于 2019-03-29 15:58:07">2019-03-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2016/11/24/node-sass%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" title="关于 windows 下 node_modules\node-sass\vendor 的报错解决方法"><img src="/img/cover_code.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="关于 windows 下 node_modules\node-sass\vendor 的报错解决方法"/></a><div class="content"><a class="title" href="/2016/11/24/node-sass%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" title="关于 windows 下 node_modules\node-sass\vendor 的报错解决方法">关于 windows 下 node_modules\node-sass\vendor 的报错解决方法</a><time datetime="2016-11-24T02:55:46.000Z" title="发表于 2016-11-24 10:55:46">2016-11-24</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/footer_img.jpeg);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2023 - 2025 By OXOYO</span><span class="framework-info"><span>框架 </span><a href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.3</a></span></div><div class="footer_custom_text">京ICP备2023002375号-1</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
