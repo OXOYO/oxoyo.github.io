@@ -1,0 +1,1089 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Open-Source-LLM-Development-Landscape解读 | 之梦</title><meta name="author" content="OXOYO"><meta name="copyright" content="OXOYO"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="Open Source LLM Development Landscape解读 Open Source LLM Development Landscape 展示了开源 LLM 生态系统的全景，涵盖了从 AI 代理到 AI 基础设施的各个环节。本文将详细介绍图中的各个项目，并对相同类型的项目进行对比分析。 一、AI Agent（人工智能代理）1. AI Coding（AI编程）   项目 简介 官网">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Open-Source-LLM-Development-Landscape解读">
+<meta property="og:url" content="http://oxoyo.github.io/2025/09/19/Open-Source-LLM-Development-Landscape%E8%A7%A3%E8%AF%BB/index.html">
+<meta property="og:site_name" content="之梦">
+<meta property="og:description" content="Open Source LLM Development Landscape解读 Open Source LLM Development Landscape 展示了开源 LLM 生态系统的全景，涵盖了从 AI 代理到 AI 基础设施的各个环节。本文将详细介绍图中的各个项目，并对相同类型的项目进行对比分析。 一、AI Agent（人工智能代理）1. AI Coding（AI编程）   项目 简介 官网">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://oxoyo.github.io/2025/09/19/Open-Source-LLM-Development-Landscape%E8%A7%A3%E8%AF%BB/Open-Source-LLM-Development-Landscape%E8%A7%A3%E8%AF%BB.png">
+<meta property="article:published_time" content="2025-09-19T07:15:45.000Z">
+<meta property="article:modified_time" content="2025-09-19T07:57:59.290Z">
+<meta property="article:author" content="OXOYO">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="开源项目">
+<meta property="article:tag" content="技术生态">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://oxoyo.github.io/2025/09/19/Open-Source-LLM-Development-Landscape%E8%A7%A3%E8%AF%BB/Open-Source-LLM-Development-Landscape%E8%A7%A3%E8%AF%BB.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Open-Source-LLM-Development-Landscape解读",
+  "url": "http://oxoyo.github.io/2025/09/19/Open-Source-LLM-Development-Landscape%E8%A7%A3%E8%AF%BB/",
+  "image": "http://oxoyo.github.io/2025/09/19/Open-Source-LLM-Development-Landscape%E8%A7%A3%E8%AF%BB/Open-Source-LLM-Development-Landscape%E8%A7%A3%E8%AF%BB.png",
+  "datePublished": "2025-09-19T07:15:45.000Z",
+  "dateModified": "2025-09-19T07:57:59.290Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "OXOYO",
+      "url": "http://oxoyo.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/2013.jpg"><link rel="canonical" href="http://oxoyo.github.io/2025/09/19/Open-Source-LLM-Development-Landscape%E8%A7%A3%E8%AF%BB/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":true,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Open-Source-LLM-Development-Landscape解读',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/img/background.jpeg);"></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/2025/09/19/Open-Source-LLM-Development-Landscape%E8%A7%A3%E8%AF%BB/Open-Source-LLM-Development-Landscape%E8%A7%A3%E8%AF%BB.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">之梦</span></a><a class="nav-page-title" href="/"><span class="site-name">Open-Source-LLM-Development-Landscape解读</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">Open-Source-LLM-Development-Landscape解读</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-09-19T07:15:45.000Z" title="发表于 2025-09-19 15:15:45">2025-09-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-09-19T07:57:59.290Z" title="更新于 2025-09-19 15:57:59">2025-09-19</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="Open-Source-LLM-Development-Landscape解读"><a href="#Open-Source-LLM-Development-Landscape解读" class="headerlink" title="Open Source LLM Development Landscape解读"></a>Open Source LLM Development Landscape解读</h1><p><img src="/2025/09/19/Open-Source-LLM-Development-Landscape%E8%A7%A3%E8%AF%BB/Open-Source-LLM-Development-Landscape%E8%A7%A3%E8%AF%BB.png"></p>
+<p>Open Source LLM Development Landscape 展示了开源 LLM 生态系统的全景，涵盖了从 AI 代理到 AI 基础设施的各个环节。本文将详细介绍图中的各个项目，并对相同类型的项目进行对比分析。</p>
+<h2 id="一、AI-Agent（人工智能代理）"><a href="#一、AI-Agent（人工智能代理）" class="headerlink" title="一、AI Agent（人工智能代理）"></a>一、AI Agent（人工智能代理）</h2><h3 id="1-AI-Coding（AI编程）"><a href="#1-AI-Coding（AI编程）" class="headerlink" title="1. AI Coding（AI编程）"></a>1. AI Coding（AI编程）</h3><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>简介</th>
+<th>官网&#x2F;Github</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://gemini.google.com/" target="_blank" rel="noopener">GEMINI</a></td>
+<td>Google 推出的多模态大模型，支持文本、图像等输入</td>
+<td><a href="https://ai.google/" target="_blank" rel="noopener">Google AI</a></td>
+<td>支持多模态输入，强大的语言理解和生成能力</td>
+</tr>
+<tr>
+<td>OPENCODE</td>
+<td>开源代码生成工具，用于辅助编程</td>
+<td><a href="https://github.com/opencode-ai/opencode" target="_blank" rel="noopener">Github</a> <a href="https://github.com/charmbracelet/crush" target="_blank" rel="noopener">Github</a></td>
+<td>提供代码生成和补全功能</td>
+</tr>
+<tr>
+<td>Cline</td>
+<td>基于 LLM 的代码生成和补全工具</td>
+<td><a href="https://github.com/cline/cline" target="_blank" rel="noopener">Github</a></td>
+<td>支持多种编程语言的代码生成</td>
+</tr>
+<tr>
+<td>codename goose</td>
+<td>实验性项目，可能与代码生成或 AI 编程相关</td>
+<td><a href="https://github.com/block/goose" target="_blank" rel="noopener">Github</a></td>
+<td>专注于代码生成和自动化</td>
+</tr>
+<tr>
+<td><a href="https://www.continue.dev/" target="_blank" rel="noopener">Continue</a></td>
+<td>提供代码补全和生成功能的插件</td>
+<td><a href="https://github.com/continuedev/continue" target="_blank" rel="noopener">Github</a></td>
+<td>支持多种 IDE，可自定义模型</td>
+</tr>
+<tr>
+<td><a href="https://github.com/OpenDevin/OpenDevin" target="_blank" rel="noopener">OpenHands</a></td>
+<td>开源的 AI 编程助手，支持自动化代码生成</td>
+<td><a href="https://github.com/OpenDevin/OpenDevin" target="_blank" rel="noopener">Github</a></td>
+<td>专注于软件开发任务自动化</td>
+</tr>
+<tr>
+<td>marimo</td>
+<td>用于数据科学和机器学习的交互式 Python 环境</td>
+<td><a href="https://marimo.io/" target="_blank" rel="noopener">官网</a></td>
+<td>支持实时代码执行和可视化</td>
+</tr>
+<tr>
+<td>Codex CLI</td>
+<td>GitHub Copilot 的命令行接口</td>
+<td><a href="https://github.com/features/copilot" target="_blank" rel="noopener">Github</a></td>
+<td>通过命令行使用GitHub Copilot</td>
+</tr>
+<tr>
+<td>avante.nvim</td>
+<td>Neovim 插件，集成 AI 助手进行代码编写</td>
+<td><a href="https://github.com/yetone/avante.nvim" target="_blank" rel="noopener">Github</a></td>
+<td>为Neovim用户提供AI编程辅助</td>
+</tr>
+<tr>
+<td>Cherry Studio</td>
+<td>AI 工具平台，支持聊天机器人和知识管理</td>
+<td><a href="https://www.cherry-ai.com/" target="_blank" rel="noopener">官网</a></td>
+<td>提供AI应用开发和管理功能</td>
+</tr>
+<tr>
+<td><a href="https://openwebui.com/" target="_blank" rel="noopener">Open WebUI</a></td>
+<td>开源的 Web UI，用于访问和管理 LLM</td>
+<td><a href="https://github.com/open-webui/open-webui" target="_blank" rel="noopener">Github</a></td>
+<td>用户友好的界面，支持多种模型</td>
+</tr>
+<tr>
+<td><a href="https://lobehub.com/" target="_blank" rel="noopener">Lobe Chat</a></td>
+<td>轻量级的 AI 聊天应用</td>
+<td><a href="https://github.com/lobehub/lobe-chat" target="_blank" rel="noopener">Github</a></td>
+<td>现代化界面，支持插件扩展</td>
+</tr>
+<tr>
+<td>GENESIS</td>
+<td>专注于 AI 代理的框架</td>
+<td><a href="https://github.com/Genesis-Embodied-AI/Genesis" target="_blank" rel="noopener">Github</a></td>
+<td>提供AI代理开发框架</td>
+</tr>
+<tr>
+<td>xiaozi-esp32</td>
+<td>基于 ESP32 的嵌入式 AI 代理</td>
+<td><a href="https://github.com/78/xiaozhi-esp32" target="_blank" rel="noopener">Github</a></td>
+<td>为ESP32设备提供AI代理功能</td>
+</tr>
+</tbody></table>
+<h3 id="2-Agent-Workflow-Platform（代理工作流平台）"><a href="#2-Agent-Workflow-Platform（代理工作流平台）" class="headerlink" title="2. Agent Workflow Platform（代理工作流平台）"></a>2. Agent Workflow Platform（代理工作流平台）</h3><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>简介</th>
+<th>官网&#x2F;Github</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://dify.ai/" target="_blank" rel="noopener">Dify</a></td>
+<td>低代码平台，用于构建 AI 应用</td>
+<td><a href="https://github.com/langgenius/dify" target="_blank" rel="noopener">Github</a></td>
+<td>一站式LLM应用开发平台，支持Agent、聊天机器人和工作流</td>
+</tr>
+<tr>
+<td><a href="https://n8n.io/" target="_blank" rel="noopener">n8n</a></td>
+<td>开源的工作流自动化工具</td>
+<td><a href="https://github.com/n8n-io/n8n" target="_blank" rel="noopener">Github</a></td>
+<td>连接不同系统，实现自动化操作</td>
+</tr>
+<tr>
+<td><a href="https://ragflow.io/" target="_blank" rel="noopener">RAGFlow</a></td>
+<td>基于检索增强生成（RAG）的工作流平台</td>
+<td><a href="https://github.com/infiniflow/ragflow" target="_blank" rel="noopener">Github</a></td>
+<td>深度集成RAG技术的知识库平台</td>
+</tr>
+<tr>
+<td><a href="https://langflow.org/" target="_blank" rel="noopener">Langflow</a></td>
+<td>可视化工具，用于构建 LLM 应用</td>
+<td><a href="https://github.com/logspace-ai/langflow" target="_blank" rel="noopener">Github</a></td>
+<td>基于LangChain的可视化工作流编辑器</td>
+</tr>
+<tr>
+<td><a href="https://litellm.ai/" target="_blank" rel="noopener">LiteLLM</a></td>
+<td>轻量级的 LLM 接口库</td>
+<td><a href="https://github.com/BerriAI/litellm" target="_blank" rel="noopener">Github</a></td>
+<td>统一接口访问各种大语言模型</td>
+</tr>
+<tr>
+<td><a href="https://supabase.com/" target="_blank" rel="noopener">supabase</a></td>
+<td>后端即服务（BaaS）平台，支持 AI 集成</td>
+<td><a href="https://github.com/supabase/supabase" target="_blank" rel="noopener">Github</a></td>
+<td>开源的 Firebase 替代品</td>
+</tr>
+<tr>
+<td><a href="https://vercel.com/" target="_blank" rel="noopener">Vercel</a></td>
+<td>云平台，支持 AI 应用部署</td>
+<td><a href="https://vercel.com/" target="_blank" rel="noopener">官网</a></td>
+<td>专注于前端和全栈应用部署</td>
+</tr>
+<tr>
+<td><a href="https://www.comfy.org/" target="_blank" rel="noopener">ComfyUI</a></td>
+<td>用于构建 AI 工作流的图形化界面</td>
+<td><a href="https://github.com/comfyanonymous/ComfyUI" target="_blank" rel="noopener">Github</a></td>
+<td>专为 Stable Diffusion 设计的节点式界面</td>
+</tr>
+<tr>
+<td>mem0</td>
+<td>用于 AI 代理的记忆系统</td>
+<td><a href="https://github.com/mem0ai/mem0" target="_blank" rel="noopener">Github</a></td>
+<td>提供AI代理的记忆存储和检索功能</td>
+</tr>
+<tr>
+<td>Mастра</td>
+<td>AI 代理平台</td>
+<td><a href="https://github.com/mastra-ai/mastra" target="_blank" rel="noopener">Github</a></td>
+<td>提供AI代理开发和管理功能</td>
+</tr>
+<tr>
+<td>activepieces</td>
+<td>自动化平台，支持 AI 集成</td>
+<td><a href="https://activepieces.com/" target="_blank" rel="noopener">官网</a></td>
+<td>支持AI集成的自动化平台</td>
+</tr>
+<tr>
+<td>MaxKB</td>
+<td>知识库管理系统</td>
+<td><a href="https://maxkb.cn/" target="_blank" rel="noopener">官网</a></td>
+<td>提供知识库管理和问答功能</td>
+</tr>
+<tr>
+<td><a href="https://fastgpt.in/" target="_blank" rel="noopener">FastGPT</a></td>
+<td>快速构建 GPT 应用的平台</td>
+<td><a href="https://github.com/labring/FastGPT" target="_blank" rel="noopener">Github</a></td>
+<td>基于 FastGPT 的知识库问答系统</td>
+</tr>
+<tr>
+<td><a href="https://flowiseai.com/" target="_blank" rel="noopener">Flowise AI</a></td>
+<td>用于构建 AI 应用的可视化工具</td>
+<td><a href="https://github.com/FlowiseAI/Flowise" target="_blank" rel="noopener">Github</a></td>
+<td>基于 LangChain 的低代码 UI</td>
+</tr>
+<tr>
+<td>Agent Development Kit</td>
+<td>用于开发 AI 代理的工具包</td>
+<td><a href="https://google.github.io/adk-docs" target="_blank" rel="noopener">官网</a></td>
+<td>提供AI代理开发所需工具</td>
+</tr>
+<tr>
+<td>Browser Use</td>
+<td>浏览器扩展，用于 AI 代理</td>
+<td><a href="https://github.com/browser-use/browser-use" target="_blank" rel="noopener">Github</a></td>
+<td>提供浏览器中的AI代理功能</td>
+</tr>
+<tr>
+<td>Model Context Protocol</td>
+<td>用于模型上下文管理的协议</td>
+<td><a href="https://modelcontextprotocol.io/" target="_blank" rel="noopener">官网</a></td>
+<td>提供模型上下文管理标准</td>
+</tr>
+</tbody></table>
+<h4 id="工作流平台对比分析"><a href="#工作流平台对比分析" class="headerlink" title="工作流平台对比分析"></a>工作流平台对比分析</h4><table>
+<thead>
+<tr>
+<th>对比维度</th>
+<th>Dify</th>
+<th>n8n</th>
+<th>Langflow</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>核心定位</td>
+<td>AI 应用开发平台</td>
+<td>工作流自动化工具</td>
+<td>LLM 应用可视化构建工具</td>
+</tr>
+<tr>
+<td>主要特点</td>
+<td>一站式LLM应用开发，支持Agent、聊天机器人和工作流</td>
+<td>连接不同系统，实现自动化操作</td>
+<td>基于LangChain的可视化工作流编辑</td>
+</tr>
+<tr>
+<td>适用场景</td>
+<td>构建AI应用，如智能客服、知识库问答</td>
+<td>系统间自动化流程，如数据同步、通知发送</td>
+<td>LLM应用原型设计和快速开发</td>
+</tr>
+<tr>
+<td>技术重点</td>
+<td>LLM模型管理、Prompt优化、RAG</td>
+<td>API集成、数据流转</td>
+<td>LangChain集成、可视化流程设计</td>
+</tr>
+<tr>
+<td>用户群体</td>
+<td>AI开发者、产品经理、非技术用户</td>
+<td>开发者、运维、业务整合团队</td>
+<td>AI开发者、数据科学家</td>
+</tr>
+<tr>
+<td>上手难度</td>
+<td>低</td>
+<td>中等</td>
+<td>中等</td>
+</tr>
+</tbody></table>
+<h3 id="3-Agent-Framework（代理框架）"><a href="#3-Agent-Framework（代理框架）" class="headerlink" title="3. Agent Framework（代理框架）"></a>3. Agent Framework（代理框架）</h3><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>简介</th>
+<th>官网&#x2F;Github</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://langchain-ai.github.io/langgraph/" target="_blank" rel="noopener">LangGraph</a></td>
+<td>用于构建复杂 AI 代理的框架</td>
+<td><a href="https://github.com/langchain-ai/langgraph" target="_blank" rel="noopener">Github</a></td>
+<td>专注于构建复杂工作流和代理协调</td>
+</tr>
+<tr>
+<td><a href="https://pydantic-ai.com/" target="_blank" rel="noopener">Pydantic AI</a></td>
+<td>基于 Pydantic 的 AI 框架</td>
+<td><a href="https://github.com/pydantic/pydantic-ai" target="_blank" rel="noopener">Github</a></td>
+<td>利用 Pydantic 的数据验证功能</td>
+</tr>
+<tr>
+<td><a href="https://www.langchain.com/" target="_blank" rel="noopener">LangChain</a></td>
+<td>流行的 AI 代理框架，支持多种 LLM</td>
+<td><a href="https://github.com/langchain-ai/langchain" target="_blank" rel="noopener">Github</a></td>
+<td>模块化设计，生态系统完善</td>
+</tr>
+<tr>
+<td><a href="https://spring.io/projects/spring-ai" target="_blank" rel="noopener">spring AI</a></td>
+<td>基于 Spring 的 AI 框架</td>
+<td><a href="https://spring.io/projects/spring-ai" target="_blank" rel="noopener">官网</a></td>
+<td>与Spring生态系统深度集成</td>
+</tr>
+<tr>
+<td><a href="https://livekit.io/" target="_blank" rel="noopener">LiveKit Agents</a></td>
+<td>实时通信 AI 代理框架</td>
+<td><a href="https://github.com/livekit/agents" target="_blank" rel="noopener">Github</a></td>
+<td>专注于实时音视频通信场景</td>
+</tr>
+<tr>
+<td><a href="https://microsoft.github.io/autogen/" target="_blank" rel="noopener">AutoGen</a></td>
+<td>Microsoft 开发的 AI 代理框架</td>
+<td><a href="https://github.com/microsoft/autogen" target="_blank" rel="noopener">Github</a></td>
+<td>多智能体对话框架</td>
+</tr>
+<tr>
+<td>Picecat</td>
+<td>AI 代理框架</td>
+<td><a href="https://github.com/picecat/picecat" target="_blank" rel="noopener">Github</a></td>
+<td>提供AI代理开发框架</td>
+</tr>
+<tr>
+<td><a href="https://learn.microsoft.com/en-us/semantic-kernel/" target="_blank" rel="noopener">Semantic Kernel</a></td>
+<td>Microsoft 开发的 AI 代理框架</td>
+<td><a href="https://github.com/microsoft/semantic-kernel" target="_blank" rel="noopener">Github</a></td>
+<td>企业级AI集成SDK</td>
+</tr>
+<tr>
+<td><a href="https://www.llamaindex.ai/" target="_blank" rel="noopener">LlamaIndex</a></td>
+<td>用于构建 AI 代理的知识库框架</td>
+<td><a href="https://github.com/run-llama/llama_index" target="_blank" rel="noopener">Github</a></td>
+<td>专注于数据连接和检索</td>
+</tr>
+<tr>
+<td>Multi-agent Framework</td>
+<td>多代理框架</td>
+<td><a href="https://github.com/multi-agent-framework/multi-agent-framework" target="_blank" rel="noopener">Github</a></td>
+<td>提供多代理系统开发支持</td>
+</tr>
+<tr>
+<td>Agno</td>
+<td>多代理框架</td>
+<td><a href="https://github.com/agno-ai/agno" target="_blank" rel="noopener">Github</a></td>
+<td>专注于多智能体协作</td>
+</tr>
+<tr>
+<td><a href="https://www.camel-ai.org/" target="_blank" rel="noopener">CAMEL-AI</a></td>
+<td>AI 代理框架</td>
+<td><a href="https://github.com/camel-ai/camel" target="_blank" rel="noopener">Github</a></td>
+<td>专注于多智能体系统研究</td>
+</tr>
+<tr>
+<td><a href="https://platform.openai.com/docs/agents" target="_blank" rel="noopener">OpenAI Agents SDK</a></td>
+<td>OpenAI 提供的 AI 代理 SDK</td>
+<td><a href="https://platform.openai.com/docs/agents" target="_blank" rel="noopener">文档</a></td>
+<td>OpenAI官方代理开发工具</td>
+</tr>
+<tr>
+<td>ELIZA.OS</td>
+<td>AI 代理操作系统</td>
+<td><a href="https://github.com/eliza-os/eliza-os" target="_blank" rel="noopener">Github</a></td>
+<td>提供AI代理操作系统</td>
+</tr>
+<tr>
+<td>crowd</td>
+<td>AI 代理框架</td>
+<td><a href="https://github.com/crowd-ai/crowd" target="_blank" rel="noopener">Github</a></td>
+<td>提供AI代理开发框架</td>
+</tr>
+</tbody></table>
+<h4 id="Agent框架对比分析"><a href="#Agent框架对比分析" class="headerlink" title="Agent框架对比分析"></a>Agent框架对比分析</h4><table>
+<thead>
+<tr>
+<th>对比维度</th>
+<th>LangChain</th>
+<th>AutoGen</th>
+<th>Semantic Kernel</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>核心定位</td>
+<td>通用级AI编排框架</td>
+<td>多智能体对话框架</td>
+<td>企业级Agent SDK</td>
+</tr>
+<tr>
+<td>主要特点</td>
+<td>模块化设计，生态系统完善</td>
+<td>多Agent协作，对话编程</td>
+<td>与微软技术栈深度集成</td>
+</tr>
+<tr>
+<td>适用场景</td>
+<td>复杂AI应用开发</td>
+<td>多Agent协作任务</td>
+<td>企业系统集成</td>
+</tr>
+<tr>
+<td>技术重点</td>
+<td>Chain和Agent模式，丰富的工具链</td>
+<td>多Agent对话和协作</td>
+<td>技能和规划器模式</td>
+</tr>
+<tr>
+<td>用户群体</td>
+<td>AI开发者、后端工程师</td>
+<td>AI研究者、开发者</td>
+<td>企业开发者、.NET开发者</td>
+</tr>
+<tr>
+<td>上手难度</td>
+<td>中等</td>
+<td>较高</td>
+<td>中等</td>
+</tr>
+</tbody></table>
+<h2 id="二、AI-Infra（人工智能基础设施）"><a href="#二、AI-Infra（人工智能基础设施）" class="headerlink" title="二、AI Infra（人工智能基础设施）"></a>二、AI Infra（人工智能基础设施）</h2><h3 id="1-Model-Training-Development-and-Serving（模型训练、开发和服务）"><a href="#1-Model-Training-Development-and-Serving（模型训练、开发和服务）" class="headerlink" title="1. Model Training, Development and Serving（模型训练、开发和服务）"></a>1. Model Training, Development and Serving（模型训练、开发和服务）</h3><h4 id="Serving（服务）"><a href="#Serving（服务）" class="headerlink" title="Serving（服务）"></a>Serving（服务）</h4><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>简介</th>
+<th>官网&#x2F;Github</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://ollama.com/" target="_blank" rel="noopener">ollama</a></td>
+<td>本地运行 LLM 的工具</td>
+<td><a href="https://github.com/ollama/ollama" target="_blank" rel="noopener">Github</a></td>
+<td>轻量级本地推理平台</td>
+</tr>
+<tr>
+<td>NVIDIA Dynamo</td>
+<td>NVIDIA 提供的推理优化工具</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Xorbits Inference</td>
+<td>推理引擎</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ramalama</td>
+<td>LLM 推理框架</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>GPUStack</td>
+<td>GPU 资源管理工具</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>LLM</td>
+<td>通用的 LLM 推理框架</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>SGL</td>
+<td>推理引擎</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://nvidia.github.io/TensorRT-LLM/" target="_blank" rel="noopener">TensorRT-LLM</a></td>
+<td>NVIDIA 提供的高性能推理引擎</td>
+<td><a href="https://github.com/NVIDIA/TensorRT-LLM" target="_blank" rel="noopener">Github</a></td>
+<td>针对NVIDIA GPU优化的推理框架</td>
+</tr>
+<tr>
+<td><a href="https://docs.openvino.ai/latest/index.html" target="_blank" rel="noopener">OpenVINO</a></td>
+<td>Intel 提供的推理优化工具</td>
+<td><a href="https://github.com/openvinotoolkit/openvino" target="_blank" rel="noopener">Github</a></td>
+<td>针对Intel硬件优化</td>
+</tr>
+<tr>
+<td>LLaMA</td>
+<td>Meta 开源的 LLM 模型</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="Training（训练）"><a href="#Training（训练）" class="headerlink" title="Training（训练）"></a>Training（训练）</h4><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>简介</th>
+<th>官网&#x2F;Github</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>swift</td>
+<td>训练框架</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://unsloth.ai/" target="_blank" rel="noopener">unsloth</a></td>
+<td>高效的训练框架</td>
+<td><a href="https://github.com/unslothai/unsloth" target="_blank" rel="noopener">Github</a></td>
+<td>专注于提高训练速度</td>
+</tr>
+<tr>
+<td>LLaMA-Factory</td>
+<td>用于训练 LLaMA 模型的工具</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>verl</td>
+<td>强化学习框架</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ARreal</td>
+<td>训练框架</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://pytorch.org/" target="_blank" rel="noopener">PyTorch</a></td>
+<td>流行的深度学习框架</td>
+<td><a href="https://github.com/pytorch/pytorch" target="_blank" rel="noopener">Github</a></td>
+<td>灵活的张量计算和深度神经网络</td>
+</tr>
+<tr>
+<td><a href="https://www.paddlepaddle.org.cn/" target="_blank" rel="noopener">Paddle</a></td>
+<td>百度开发的深度学习框架</td>
+<td><a href="https://github.com/PaddlePaddle/Paddle" target="_blank" rel="noopener">Github</a></td>
+<td>支持多种AI任务</td>
+</tr>
+<tr>
+<td><a href="https://github.com/NVIDIA/Megatron-LM" target="_blank" rel="noopener">Megatron-LM</a></td>
+<td>NVIDIA 开发的大模型训练框架</td>
+<td><a href="https://github.com/NVIDIA/Megatron-LM" target="_blank" rel="noopener">Github</a></td>
+<td>专注于大规模模型训练</td>
+</tr>
+<tr>
+<td><a href="https://www.deepspeed.ai/" target="_blank" rel="noopener">deepspeed</a></td>
+<td>分布式训练框架</td>
+<td><a href="https://github.com/microsoft/DeepSpeed" target="_blank" rel="noopener">Github</a></td>
+<td>微软开发的高效分布式训练优化</td>
+</tr>
+<tr>
+<td><a href="https://developer.nvidia.com/nemo" target="_blank" rel="noopener">NeMo</a></td>
+<td>NVIDIA 开发的语音和语言处理框架</td>
+<td><a href="https://github.com/NVIDIA/NeMo" target="_blank" rel="noopener">Github</a></td>
+<td>专注于对话AI</td>
+</tr>
+</tbody></table>
+<h4 id="Distributed-Compute（分布式计算）"><a href="#Distributed-Compute（分布式计算）" class="headerlink" title="Distributed Compute（分布式计算）"></a>Distributed Compute（分布式计算）</h4><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>简介</th>
+<th>官网&#x2F;Github</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://www.ray.io/" target="_blank" rel="noopener">RAY</a></td>
+<td>分布式计算框架</td>
+<td><a href="https://github.com/ray-project/ray" target="_blank" rel="noopener">Github</a></td>
+<td>简单易用的分布式计算框架</td>
+</tr>
+<tr>
+<td><a href="https://spark.apache.org/" target="_blank" rel="noopener">Spark</a></td>
+<td>Apache Spark，用于大规模数据处理</td>
+<td><a href="https://spark.apache.org/" target="_blank" rel="noopener">官网</a></td>
+<td>大数据处理的事实标准</td>
+</tr>
+<tr>
+<td>VOLCANO</td>
+<td>分布式计算框架</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="AI-Kernel-Library（AI内核库）"><a href="#AI-Kernel-Library（AI内核库）" class="headerlink" title="AI Kernel Library（AI内核库）"></a>AI Kernel Library（AI内核库）</h4><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>简介</th>
+<th>官网&#x2F;Github</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://rapids.ai/" target="_blank" rel="noopener">RAPIDS</a></td>
+<td>NVIDIA 提供的 GPU 加速数据处理库</td>
+<td><a href="https://github.com/rapidsai" target="_blank" rel="noopener">Github</a></td>
+<td>GPU加速的数据科学工具套件</td>
+</tr>
+<tr>
+<td>TransformerEngine</td>
+<td>用于 Transformer 模型的优化库</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/HazyResearch/flash-attention" target="_blank" rel="noopener">FlashAttention</a></td>
+<td>高效的注意力机制实现</td>
+<td><a href="https://github.com/HazyResearch/flash-attention" target="_blank" rel="noopener">Github</a></td>
+<td>内存高效的注意力计算</td>
+</tr>
+<tr>
+<td><a href="https://github.com/ml-explore/mlx" target="_blank" rel="noopener">MLX</a></td>
+<td>苹果开发的机器学习库</td>
+<td><a href="https://github.com/ml-explore/mlx" target="_blank" rel="noopener">Github</a></td>
+<td>为Apple芯片优化</td>
+</tr>
+<tr>
+<td><a href="https://github.com/NVIDIA/cutlass" target="_blank" rel="noopener">CUTLASS</a></td>
+<td>NVIDIA 提供的高性能矩阵运算库</td>
+<td><a href="https://github.com/NVIDIA/cutlass" target="_blank" rel="noopener">Github</a></td>
+<td>高性能线性代数计算</td>
+</tr>
+<tr>
+<td>DeepEP</td>
+<td>深度学习优化库</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="AI-Compiler（AI编译器）"><a href="#AI-Compiler（AI编译器）" class="headerlink" title="AI Compiler（AI编译器）"></a>AI Compiler（AI编译器）</h4><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>简介</th>
+<th>官网&#x2F;Github</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://triton-lang.org/" target="_blank" rel="noopener">Triton</a></td>
+<td>用于 GPU 编程的编译器</td>
+<td><a href="https://github.com/openai/triton" target="_blank" rel="noopener">Github</a></td>
+<td>OpenAI开发的类Python语言</td>
+</tr>
+<tr>
+<td>Modular</td>
+<td>模块化的 AI 编译器</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="模型服务框架对比分析"><a href="#模型服务框架对比分析" class="headerlink" title="模型服务框架对比分析"></a>模型服务框架对比分析</h4><table>
+<thead>
+<tr>
+<th>对比维度</th>
+<th>Ollama</th>
+<th>TensorRT-LLM</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>核心定位</td>
+<td>轻量级本地推理平台</td>
+<td>NVIDIA高性能推理引擎</td>
+</tr>
+<tr>
+<td>主要特点</td>
+<td>易于部署，支持多种模型</td>
+<td>针对NVIDIA GPU优化，性能极致</td>
+</tr>
+<tr>
+<td>适用场景</td>
+<td>个人开发者，本地测试</td>
+<td>企业级应用，高性能需求</td>
+</tr>
+<tr>
+<td>技术重点</td>
+<td>简化部署流程</td>
+<td>硬件级优化</td>
+</tr>
+<tr>
+<td>硬件支持</td>
+<td>CPU&#x2F;GPU通用</td>
+<td>仅限NVIDIA GPU</td>
+</tr>
+<tr>
+<td>上手难度</td>
+<td>极低</td>
+<td>较高</td>
+</tr>
+</tbody></table>
+<h3 id="2-LLMOps（LLM-运维）"><a href="#2-LLMOps（LLM-运维）" class="headerlink" title="2. LLMOps（LLM 运维）"></a>2. LLMOps（LLM 运维）</h3><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>简介</th>
+<th>官网&#x2F;Github</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://mlflow.org/" target="_blank" rel="noopener">mlflow</a></td>
+<td>用于管理机器学习生命周期的工具</td>
+<td><a href="https://github.com/mlflow/mlflow" target="_blank" rel="noopener">Github</a></td>
+<td>开源的ML生命周期管理平台</td>
+</tr>
+<tr>
+<td>TPanel</td>
+<td>监控面板</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://langfuse.com/" target="_blank" rel="noopener">Langfuse</a></td>
+<td>用于监控和调试 LLM 的工具</td>
+<td><a href="https://github.com/langfuse/langfuse" target="_blank" rel="noopener">Github</a></td>
+<td>LLM工程平台</td>
+</tr>
+<tr>
+<td><a href="https://wandb.ai/" target="_blank" rel="noopener">Weights &amp; Biases</a></td>
+<td>用于实验跟踪和可视化的工具</td>
+<td><a href="https://wandb.ai/" target="_blank" rel="noopener">官网</a></td>
+<td>实验跟踪和可视化平台</td>
+</tr>
+<tr>
+<td>opik</td>
+<td>用于监控 LLM 的工具</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://phoenix.arize.com/" target="_blank" rel="noopener">Phoenix</a></td>
+<td>用于监控和调试 LLM 的工具</td>
+<td><a href="https://github.com/Arize-ai/phoenix" target="_blank" rel="noopener">Github</a></td>
+<td>Arize AI开发的可观测性平台</td>
+</tr>
+<tr>
+<td><a href="https://www.mlrun.org/" target="_blank" rel="noopener">MLRun</a></td>
+<td>用于机器学习工作的平台</td>
+<td><a href="https://github.com/mlrun/mlrun" target="_blank" rel="noopener">Github</a></td>
+<td>端到端的ML操作框架</td>
+</tr>
+<tr>
+<td><a href="https://www.promptfoo.dev/" target="_blank" rel="noopener">promptfoo</a></td>
+<td>用于测试和优化提示词的工具</td>
+<td><a href="https://github.com/promptfoo/promptfoo" target="_blank" rel="noopener">Github</a></td>
+<td>提示词测试和评估工具</td>
+</tr>
+<tr>
+<td>Dagger</td>
+<td>用于构建和部署 LLM 的工具</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="3-AI-Data（AI-数据）"><a href="#3-AI-Data（AI-数据）" class="headerlink" title="3. AI Data（AI 数据）"></a>3. AI Data（AI 数据）</h3><h4 id="Data-Labeling（数据标注）"><a href="#Data-Labeling（数据标注）" class="headerlink" title="Data Labeling（数据标注）"></a>Data Labeling（数据标注）</h4><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>简介</th>
+<th>官网&#x2F;Github</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://labelstud.io/" target="_blank" rel="noopener">Label Studio</a></td>
+<td>数据标注工具</td>
+<td><a href="https://github.com/HumanSignal/label-studio" target="_blank" rel="noopener">Github</a></td>
+<td>多类型数据标注平台</td>
+</tr>
+<tr>
+<td><a href="https://cvat.org/" target="_blank" rel="noopener">CVAT</a></td>
+<td>视频标注工具</td>
+<td><a href="https://github.com/cvat-ai/cvat" target="_blank" rel="noopener">Github</a></td>
+<td>计算机视觉标注工具</td>
+</tr>
+<tr>
+<td>Vespa</td>
+<td>搜索和推荐引擎</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="Data-Integration（数据集成）"><a href="#Data-Integration（数据集成）" class="headerlink" title="Data Integration（数据集成）"></a>Data Integration（数据集成）</h4><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>简介</th>
+<th>官网&#x2F;Github</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://airflow.apache.org/" target="_blank" rel="noopener">Airflow</a></td>
+<td>工作流调度工具</td>
+<td><a href="https://github.com/apache/airflow" target="_blank" rel="noopener">Github</a></td>
+<td>Apache的工作流调度平台</td>
+</tr>
+<tr>
+<td><a href="https://airbyte.com/" target="_blank" rel="noopener">Airbyte</a></td>
+<td>数据集成工具</td>
+<td><a href="https://github.com/airbytehq/airbyte" target="_blank" rel="noopener">Github</a></td>
+<td>开源数据集成平台</td>
+</tr>
+<tr>
+<td><a href="https://dagster.io/" target="_blank" rel="noopener">dagster</a></td>
+<td>数据管道工具</td>
+<td><a href="https://github.com/dagster-io/dagster" target="_blank" rel="noopener">Github</a></td>
+<td>数据应用编排平台</td>
+</tr>
+</tbody></table>
+<h4 id="Data-Governance（数据治理）"><a href="#Data-Governance（数据治理）" class="headerlink" title="Data Governance（数据治理）"></a>Data Governance（数据治理）</h4><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>简介</th>
+<th>官网&#x2F;Github</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ICEBERG</td>
+<td>数据湖格式</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Paimon</td>
+<td>数据湖存储系统</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://datahubproject.io/" target="_blank" rel="noopener">DataHub</a></td>
+<td>数据治理平台</td>
+<td><a href="https://github.com/datahub-project/datahub" target="_blank" rel="noopener">Github</a></td>
+<td>LinkedIn开源的数据治理平台</td>
+</tr>
+<tr>
+<td>Delta Lake</td>
+<td>数据湖存储系统</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Open Metadata</td>
+<td>元数据管理工具</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>GRAVITINO</td>
+<td>数据治理工具</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Shu6i</td>
+<td>数据治理工具</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="Vector-Storage-and-Search（向量存储和搜索）"><a href="#Vector-Storage-and-Search（向量存储和搜索）" class="headerlink" title="Vector Storage and Search（向量存储和搜索）"></a>Vector Storage and Search（向量存储和搜索）</h4><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>简介</th>
+<th>官网&#x2F;Github</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://www.elastic.co/elasticsearch/" target="_blank" rel="noopener">elasticsearch</a></td>
+<td>搜索引擎</td>
+<td><a href="https://www.elastic.co/elasticsearch/" target="_blank" rel="noopener">官网</a></td>
+<td>全文搜索引擎</td>
+</tr>
+<tr>
+<td><a href="https://milvus.io/" target="_blank" rel="noopener">Milvus</a></td>
+<td>向量数据库</td>
+<td><a href="https://github.com/milvus-io/milvus" target="_blank" rel="noopener">Github</a></td>
+<td>开源向量数据库</td>
+</tr>
+<tr>
+<td><a href="https://opensearch.org/" target="_blank" rel="noopener">OpenSearch</a></td>
+<td>开源搜索引擎</td>
+<td><a href="https://opensearch.org/" target="_blank" rel="noopener">官网</a></td>
+<td>AWS开源的搜索和分析套件</td>
+</tr>
+<tr>
+<td><a href="https://www.trychroma.com/" target="_blank" rel="noopener">chroma</a></td>
+<td>向量数据库</td>
+<td><a href="https://github.com/chroma-core/chroma" target="_blank" rel="noopener">Github</a></td>
+<td>AI原生开源嵌入数据库</td>
+</tr>
+<tr>
+<td><a href="https://weaviate.io/" target="_blank" rel="noopener">weaviate</a></td>
+<td>向量数据库</td>
+<td><a href="https://github.com/weaviate/weaviate" target="_blank" rel="noopener">Github</a></td>
+<td>云原生开源向量数据库</td>
+</tr>
+<tr>
+<td>drant</td>
+<td>向量数据库</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="APP-Framework（应用框架）"><a href="#APP-Framework（应用框架）" class="headerlink" title="APP Framework（应用框架）"></a>APP Framework（应用框架）</h4><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>简介</th>
+<th>官网&#x2F;Github</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://streamlit.io/" target="_blank" rel="noopener">Streamlit</a></td>
+<td>用于构建数据应用的框架</td>
+<td><a href="https://github.com/streamlit/streamlit" target="_blank" rel="noopener">Github</a></td>
+<td>快速创建数据应用</td>
+</tr>
+<tr>
+<td><a href="https://www.gradio.app/" target="_blank" rel="noopener">gradio</a></td>
+<td>用于构建机器学习应用的框架</td>
+<td><a href="https://github.com/gradio-app/gradio" target="_blank" rel="noopener">Github</a></td>
+<td>机器学习模型演示工具</td>
+</tr>
+</tbody></table>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Open Source LLM Development Landscape 全面展示了开源 LLM 生态系统的各个组成部分，从 AI 代理到 AI 基础设施，涵盖了从模型训练、推理、部署到数据管理和应用开发的各个环节。每个项目都有其特定的功能和应用场景，共同构成了一个完整的开源 LLM 开发生态。</p>
+<p>选择合适的工具需要根据具体需求来决定：</p>
+<ol>
+<li>对于AI应用开发，可以根据是否需要多Agent协作选择LangChain或AutoGen</li>
+<li>对于模型服务，个人开发者可选择Ollama，企业级应用可选择TensorRT-LLM</li>
+<li>对于工作流平台，构建AI应用可选择Dify，系统集成可选择n8n</li>
+<li>对于基础设施，训练可选择PyTorch，推理优化可选择TensorRT-LLM或OpenVINO</li>
+</ol>
+<p>这些项目共同构成了一个丰富的生态系统，为开发者提供了多种选择来构建和部署AI应用.</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://oxoyo.github.io">OXOYO</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://oxoyo.github.io/2025/09/19/Open-Source-LLM-Development-Landscape%E8%A7%A3%E8%AF%BB/">http://oxoyo.github.io/2025/09/19/Open-Source-LLM-Development-Landscape%E8%A7%A3%E8%AF%BB/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://oxoyo.github.io" target="_blank">之梦</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/AI/">AI</a><a class="post-meta__tags" href="/tags/LLM/">LLM</a><a class="post-meta__tags" href="/tags/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/">开源项目</a><a class="post-meta__tags" href="/tags/%E6%8A%80%E6%9C%AF%E7%94%9F%E6%80%81/">技术生态</a></div><div class="post-share"><div class="social-share" data-image="/2025/09/19/Open-Source-LLM-Development-Landscape%E8%A7%A3%E8%AF%BB/Open-Source-LLM-Development-Landscape%E8%A7%A3%E8%AF%BB.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2022/02/10/pay-me/" title="pay-me"><img class="cover" src="/2022/02/10/pay-me/pay-me.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">pay-me</div></div><div class="info-2"><div class="info-item-1"> </div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/2013.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">OXOYO</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">13</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" href="https://github.com/OXOYO"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Open-Source-LLM-Development-Landscape%E8%A7%A3%E8%AF%BB"><span class="toc-number">1.</span> <span class="toc-text">Open Source LLM Development Landscape解读</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81AI-Agent%EF%BC%88%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E4%BB%A3%E7%90%86%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">一、AI Agent（人工智能代理）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-AI-Coding%EF%BC%88AI%E7%BC%96%E7%A8%8B%EF%BC%89"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. AI Coding（AI编程）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Agent-Workflow-Platform%EF%BC%88%E4%BB%A3%E7%90%86%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%B9%B3%E5%8F%B0%EF%BC%89"><span class="toc-number">1.1.2.</span> <span class="toc-text">2. Agent Workflow Platform（代理工作流平台）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%B9%B3%E5%8F%B0%E5%AF%B9%E6%AF%94%E5%88%86%E6%9E%90"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">工作流平台对比分析</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Agent-Framework%EF%BC%88%E4%BB%A3%E7%90%86%E6%A1%86%E6%9E%B6%EF%BC%89"><span class="toc-number">1.1.3.</span> <span class="toc-text">3. Agent Framework（代理框架）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Agent%E6%A1%86%E6%9E%B6%E5%AF%B9%E6%AF%94%E5%88%86%E6%9E%90"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">Agent框架对比分析</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81AI-Infra%EF%BC%88%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">二、AI Infra（人工智能基础设施）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Model-Training-Development-and-Serving%EF%BC%88%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E3%80%81%E5%BC%80%E5%8F%91%E5%92%8C%E6%9C%8D%E5%8A%A1%EF%BC%89"><span class="toc-number">1.2.1.</span> <span class="toc-text">1. Model Training, Development and Serving（模型训练、开发和服务）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Serving%EF%BC%88%E6%9C%8D%E5%8A%A1%EF%BC%89"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">Serving（服务）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Training%EF%BC%88%E8%AE%AD%E7%BB%83%EF%BC%89"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">Training（训练）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Distributed-Compute%EF%BC%88%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%A1%E7%AE%97%EF%BC%89"><span class="toc-number">1.2.1.3.</span> <span class="toc-text">Distributed Compute（分布式计算）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AI-Kernel-Library%EF%BC%88AI%E5%86%85%E6%A0%B8%E5%BA%93%EF%BC%89"><span class="toc-number">1.2.1.4.</span> <span class="toc-text">AI Kernel Library（AI内核库）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AI-Compiler%EF%BC%88AI%E7%BC%96%E8%AF%91%E5%99%A8%EF%BC%89"><span class="toc-number">1.2.1.5.</span> <span class="toc-text">AI Compiler（AI编译器）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E6%9C%8D%E5%8A%A1%E6%A1%86%E6%9E%B6%E5%AF%B9%E6%AF%94%E5%88%86%E6%9E%90"><span class="toc-number">1.2.1.6.</span> <span class="toc-text">模型服务框架对比分析</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-LLMOps%EF%BC%88LLM-%E8%BF%90%E7%BB%B4%EF%BC%89"><span class="toc-number">1.2.2.</span> <span class="toc-text">2. LLMOps（LLM 运维）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-AI-Data%EF%BC%88AI-%E6%95%B0%E6%8D%AE%EF%BC%89"><span class="toc-number">1.2.3.</span> <span class="toc-text">3. AI Data（AI 数据）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Data-Labeling%EF%BC%88%E6%95%B0%E6%8D%AE%E6%A0%87%E6%B3%A8%EF%BC%89"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">Data Labeling（数据标注）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Data-Integration%EF%BC%88%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90%EF%BC%89"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">Data Integration（数据集成）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Data-Governance%EF%BC%88%E6%95%B0%E6%8D%AE%E6%B2%BB%E7%90%86%EF%BC%89"><span class="toc-number">1.2.3.3.</span> <span class="toc-text">Data Governance（数据治理）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Vector-Storage-and-Search%EF%BC%88%E5%90%91%E9%87%8F%E5%AD%98%E5%82%A8%E5%92%8C%E6%90%9C%E7%B4%A2%EF%BC%89"><span class="toc-number">1.2.3.4.</span> <span class="toc-text">Vector Storage and Search（向量存储和搜索）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#APP-Framework%EF%BC%88%E5%BA%94%E7%94%A8%E6%A1%86%E6%9E%B6%EF%BC%89"><span class="toc-number">1.2.3.5.</span> <span class="toc-text">APP Framework（应用框架）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.3.</span> <span class="toc-text">总结</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/09/19/Open-Source-LLM-Development-Landscape%E8%A7%A3%E8%AF%BB/" title="Open-Source-LLM-Development-Landscape解读"><img src="/2025/09/19/Open-Source-LLM-Development-Landscape%E8%A7%A3%E8%AF%BB/Open-Source-LLM-Development-Landscape%E8%A7%A3%E8%AF%BB.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Open-Source-LLM-Development-Landscape解读"/></a><div class="content"><a class="title" href="/2025/09/19/Open-Source-LLM-Development-Landscape%E8%A7%A3%E8%AF%BB/" title="Open-Source-LLM-Development-Landscape解读">Open-Source-LLM-Development-Landscape解读</a><time datetime="2025-09-19T07:15:45.000Z" title="发表于 2025-09-19 15:15:45">2025-09-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/02/10/pay-me/" title="pay-me"><img src="/2022/02/10/pay-me/pay-me.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="pay-me"/></a><div class="content"><a class="title" href="/2022/02/10/pay-me/" title="pay-me">pay-me</a><time datetime="2022-02-10T05:46:04.000Z" title="发表于 2022-02-10 13:46:04">2022-02-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019/03/29/%E7%A6%81%E7%94%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7%E8%84%9A%E6%9C%AC/" title="禁用浏览器调试工具脚本"><img src="https://picsum.photos/800/600?random=7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="禁用浏览器调试工具脚本"/></a><div class="content"><a class="title" href="/2019/03/29/%E7%A6%81%E7%94%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7%E8%84%9A%E6%9C%AC/" title="禁用浏览器调试工具脚本">禁用浏览器调试工具脚本</a><time datetime="2019-03-29T08:04:06.000Z" title="发表于 2019-03-29 16:04:06">2019-03-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019/03/29/%E9%80%9A%E8%BF%87chrome%E6%89%A9%E5%B1%95%E6%89%93%E5%BC%80%E7%BD%91%E9%A1%B5/" title="通过chrome扩展打开网页"><img src="https://picsum.photos/800/600?random=8" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="通过chrome扩展打开网页"/></a><div class="content"><a class="title" href="/2019/03/29/%E9%80%9A%E8%BF%87chrome%E6%89%A9%E5%B1%95%E6%89%93%E5%BC%80%E7%BD%91%E9%A1%B5/" title="通过chrome扩展打开网页">通过chrome扩展打开网页</a><time datetime="2019-03-29T02:56:20.000Z" title="发表于 2019-03-29 10:56:20">2019-03-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019/03/29/npm%20install%20chromedriver%20%E5%A4%B1%E8%B4%A5%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" title="npm install chromedriver 失败解决办法"><img src="https://picsum.photos/800/600?random=5" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="npm install chromedriver 失败解决办法"/></a><div class="content"><a class="title" href="/2019/03/29/npm%20install%20chromedriver%20%E5%A4%B1%E8%B4%A5%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" title="npm install chromedriver 失败解决办法">npm install chromedriver 失败解决办法</a><time datetime="2019-03-29T02:41:12.000Z" title="发表于 2019-03-29 10:41:12">2019-03-29</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/footer_img.jpeg);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2023 - 2025 By OXOYO</span><span class="framework-info"><span>框架 </span><a href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.3</a></span></div><div class="footer_custom_text">京ICP备2023002375号-1</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
